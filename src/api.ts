@@ -1,4 +1,27 @@
-const API_BASE_URL = "https://api.3dugc.com";
+// Dynamically construct API base URL based on current domain
+// Pattern: if domain is "3dugc.com", API is "api.d.3dugc.com"
+// Pattern: if domain is "xingkou.net", API is "api.d.xingkou.net"
+const getApiBaseUrl = (): string => {
+  let hostname = window.location.hostname;
+
+  // For localhost or development, use default
+  if (hostname === "localhost" || hostname === "127.0.0.1") {
+    return "https://api.d.3dugc.com";
+  }
+
+  // Strip www or other subdomain prefixes to get base domain
+  // e.g., www.3dugc.com -> 3dugc.com, test.xingkou.net -> xingkou.net
+  const parts = hostname.split(".");
+  if (parts.length > 2) {
+    // Keep only the last two parts (domain + TLD)
+    hostname = parts.slice(-2).join(".");
+  }
+
+  // Construct API URL: api.d.{domain}
+  return `https://api.d.${hostname}`;
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 interface Token {
   accessToken: string;
