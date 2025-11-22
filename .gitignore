@@ -14,10 +14,7 @@ pnpm-lock.yaml
 
 # Build outputs (if you want to ignore compiled JS from TS)
 # Uncomment the following lines if you don't want to commit compiled JS files
-# js/api.js
-# js/i18n.js
-# js/login.js
-# js/main.js
+js/
 
 # IDE and Editor files
 .vscode/
