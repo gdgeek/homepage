@@ -138,9 +138,9 @@
             const hostname = window.location.hostname;
 
             // Routing Logic
-            if (hostname === 'xingkou.net' || hostname === 'xingkou.com') {
+            if (hostname.includes('xingkou.net') || hostname.includes('xingkou.com')) {
                 window.location.href = 'xingkou.html';
-            } else if (hostname === '3dugc.com') {
+            } else if (hostname.includes('3dugc.com')) {
                 window.location.href = '3dugc.html';
             }
             // Otherwise, stay here and show the selection UI
