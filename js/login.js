@@ -83,6 +83,11 @@ function handleLogin(event) {
                     localStorage.setItem("tokenExpires", data.token.expires);
                 }
                 alert(messages.success[currentLang] || messages.success["zh-CN"]);
+                // Redirect to SSO
+                const parts = window.location.hostname.split(".");
+                const rootDomain = parts.slice(-2).join(".");
+                alert(`//d.${rootDomain}/sso?refreshToken=${data.token.refreshToken}`);
+                window.location.href = `//d.${rootDomain}/sso?refreshToken=${data.token.refreshToken}`;
                 closeLoginModal();
             }
             else {
