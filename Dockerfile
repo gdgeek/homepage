@@ -3,14 +3,14 @@ FROM node:21.1.0 AS build
 
 WORKDIR /app
 
-# Copy package files first for better caching
-COPY package.json pnpm-lock.yaml ./
+# Copy package file
+COPY package.json ./
 
 # Install pnpm globally
 RUN npm install -g pnpm@latest
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile
+# Install dependencies (pnpm will generate lock file)
+RUN pnpm install
 
 # Copy source code
 COPY . .
