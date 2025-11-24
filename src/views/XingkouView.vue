@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { Upload, Box, Monitor, Cpu, Connection, VideoCamera, Cellphone } from '@element-plus/icons-vue';
 import LoginModal from '../components/LoginModal.vue';
 
 const loginModal = ref<InstanceType<typeof LoginModal> | null>(null);
+const searchQuery = ref('');
+const activeMenu = ref('home');
 
 const openLogin = () => {
     loginModal.value?.open();
@@ -12,8 +15,96 @@ const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
+        activeMenu.value = id;
     }
 };
+
+const handleSearch = () => {
+    if (searchQuery.value.trim()) {
+        console.log('Searching for:', searchQuery.value);
+        // Add search logic here
+    }
+};
+
+// Platform Features Data
+const platformFeatures = [
+    {
+        icon: Upload,
+        title: '无代码创作',
+        description: '师生无需编写任何代码，即可轻松创建沉浸式AR教学内容。降低创作门槛，激发创新思维。'
+    },
+    {
+        icon: Box,
+        title: '场景拼装',
+        description: '通过在3D空间中放置对象，直观地组装课程场景。所见即所得，快速构建教学环境。'
+    },
+    {
+        icon: Monitor,
+        title: '可视化逻辑',
+        description: '只需拖放逻辑块即可实现复杂的交互式课件。让教学内容动起来，提高学生参与度。'
+    }
+];
+
+// Core Technology Data
+const coreTech = [
+    {
+        icon: Cpu,
+        title: 'AR + AI 核心',
+        description: '由先进AI驱动的智能内容生成与物体识别技术。自动识别教学用具，智能推荐相关资源。'
+    },
+    {
+        icon: Connection,
+        title: '多设备互动',
+        description: 'AR眼镜、平板电脑和手机之间的实时协作。支持多人同场景互动，打造协作式课堂。'
+    },
+    {
+        icon: VideoCamera,
+        title: '三方视角与投屏',
+        description: '将AR视角实时投屏到大屏幕，实现全班教学分享。教师可实时监控学生视角，精准指导。'
+    }
+];
+
+// Devices Data
+const devices = [
+    {
+        name: 'Rokid AR Studio',
+        tag: 'AR眼镜',
+        type: 'danger',
+        description: '沉浸式学习的完美空间计算设备。提供极致的视觉体验和交互能力。',
+        icon: Monitor
+    },
+    {
+        name: 'iPad',
+        tag: '平板电脑',
+        type: 'warning',
+        description: '随时随地创建和查看教育AR内容。便携易用，普及率高。',
+        icon: Cellphone
+    }
+];
+
+// News List Data
+const newsList = [
+    {
+        title: '教育版 AI 新功能发布：增强自动绑定',
+        date: '2025-11-20'
+    },
+    {
+        title: '大屏幕投屏支持：无缝投屏到教室显示屏',
+        date: '2025-11-18'
+    },
+    {
+        title: '全球教育合作伙伴计划启动',
+        date: '2025-11-15'
+    },
+    {
+        title: '星扣平台 V1.0 正式上线公告',
+        date: '2025-11-01'
+    },
+    {
+        title: '关于举办数字化教学培训的通知',
+        date: '2025-10-28'
+    }
+];
 </script>
 
 <template>
@@ -37,8 +128,8 @@ const scrollToSection = (id: string) => {
                     <span>让每个人都可以快乐的创造世界</span>
                 </div>
                 <div class="search-box">
-                    <input type="text" placeholder="请输入关键字搜索...">
-                    <button>搜索</button>
+                    <input type="text" v-model="searchQuery" placeholder="请输入关键字搜索..." @keyup.enter="handleSearch" />
+                    <button @click="handleSearch">搜索</button>
                     <button class="login-btn-header" @click="openLogin">登录</button>
                 </div>
             </div>
@@ -47,14 +138,15 @@ const scrollToSection = (id: string) => {
         <!-- Navigation -->
         <div class="nav">
             <div class="container">
-                <ul class="clearfix">
-                    <li class="active"><a href="#home" @click.prevent="scrollToSection('home')">首页</a></li>
-                    <li><a href="#intro" @click.prevent="scrollToSection('intro')">平台介绍</a></li>
-                    <li><a href="#tech" @click.prevent="scrollToSection('tech')">核心技术</a></li>
-                    <li><a href="#devices" @click.prevent="scrollToSection('devices')">支持设备</a></li>
-                    <li><a href="#news" @click.prevent="scrollToSection('news')">新闻动态</a></li>
-                    <li><a href="#about" @click.prevent="scrollToSection('about')">关于我们</a></li>
-                </ul>
+                <el-menu mode="horizontal" :default-active="activeMenu" class="nav-menu" background-color="#0056b3"
+                    text-color="#fff" active-text-color="#ffd04b">
+                    <el-menu-item index="home" @click="scrollToSection('home')">首页</el-menu-item>
+                    <el-menu-item index="intro" @click="scrollToSection('intro')">平台介绍</el-menu-item>
+                    <el-menu-item index="tech" @click="scrollToSection('tech')">核心技术</el-menu-item>
+                    <el-menu-item index="devices" @click="scrollToSection('devices')">支持设备</el-menu-item>
+                    <el-menu-item index="news" @click="scrollToSection('news')">新闻动态</el-menu-item>
+                    <el-menu-item index="about" @click="scrollToSection('about')">关于我们</el-menu-item>
+                </el-menu>
             </div>
         </div>
 
@@ -69,78 +161,109 @@ const scrollToSection = (id: string) => {
         <!-- Main Content -->
         <div class="main container">
             <!-- About Section -->
-            <div class="section-box" id="intro">
-                <div class="section-title">平台介绍 <span>更多 >></span></div>
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <h3>无代码创作</h3>
-                        <p>师生无需编写任何代码，即可轻松创建沉浸式AR教学内容。降低创作门槛，激发创新思维。</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>场景拼装</h3>
-                        <p>通过在3D空间中放置对象，直观地组装课程场景。所见即所得，快速构建教学环境。</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>可视化逻辑</h3>
-                        <p>只需拖放逻辑块即可实现复杂的交互式课件。让教学内容动起来，提高学生参与度。</p>
-                    </div>
-                </div>
+            <div id="intro" class="section-wrapper">
+                <el-row :gutter="20">
+                    <el-col :span="24">
+                        <div class="section-header">
+                            <h2>平台介绍</h2>
+                            <el-tag type="primary" effect="plain">Platform Introduction</el-tag>
+                        </div>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="20">
+                    <el-col :xs="24" :sm="24" :md="8" v-for="(feature, index) in platformFeatures" :key="index">
+                        <el-card shadow="hover" class="feature-card">
+                            <template #header>
+                                <div class="card-header">
+                                    <el-icon :size="24" color="#0056b3">
+                                        <component :is="feature.icon" />
+                                    </el-icon>
+                                    <span>{{ feature.title }}</span>
+                                </div>
+                            </template>
+                            <p>{{ feature.description }}</p>
+                        </el-card>
+                    </el-col>
+                </el-row>
             </div>
 
             <!-- Capabilities Section -->
-            <div class="section-box" id="tech">
-                <div class="section-title">核心技术 <span>更多 >></span></div>
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <h3>AR + AI 核心</h3>
-                        <p>由先进AI驱动的智能内容生成与物体识别技术。自动识别教学用具，智能推荐相关资源。</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>多设备互动</h3>
-                        <p>AR眼镜、平板电脑和手机之间的实时协作。支持多人同场景互动，打造协作式课堂。</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>三方视角与投屏</h3>
-                        <p>将AR视角实时投屏到大屏幕，实现全班教学分享。教师可实时监控学生视角，精准指导。</p>
-                    </div>
-                </div>
+            <div id="tech" class="section-wrapper">
+                <el-row :gutter="20">
+                    <el-col :span="24">
+                        <div class="section-header">
+                            <h2>核心技术</h2>
+                            <el-tag type="success" effect="plain">Core Technology</el-tag>
+                        </div>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="20">
+                    <el-col :xs="24" :sm="24" :md="8" v-for="(tech, index) in coreTech" :key="index">
+                        <el-card shadow="hover" class="feature-card">
+                            <template #header>
+                                <div class="card-header">
+                                    <el-icon :size="24" color="#0056b3">
+                                        <component :is="tech.icon" />
+                                    </el-icon>
+                                    <span>{{ tech.title }}</span>
+                                </div>
+                            </template>
+                            <p>{{ tech.description }}</p>
+                        </el-card>
+                    </el-col>
+                </el-row>
             </div>
 
-            <div class="clearfix">
-                <!-- Devices Section (Left) -->
-                <div class="section-box fl" style="width: 68%;" id="devices">
-                    <div class="section-title">支持设备</div>
-                    <div class="feature-grid">
-                        <div class="feature-item" style="width: 48%;">
-                            <h3>Rokid AR Studio</h3>
-                            <p>沉浸式学习的完美空间计算设备。提供极致的视觉体验和交互能力。</p>
-                        </div>
-                        <div class="feature-item" style="width: 48%;">
-                            <h3>iPad</h3>
-                            <p>随时随地创建和查看教育AR内容。便携易用，普及率高。</p>
-                        </div>
+            <!-- Devices and News Section -->
+            <el-row :gutter="20" class="section-wrapper">
+                <!-- Devices Section -->
+                <el-col :xs="24" :sm="24" :md="16" id="devices">
+                    <div class="section-header">
+                        <h2>支持设备</h2>
+                        <el-tag type="warning" effect="plain">Supported Devices</el-tag>
                     </div>
-                </div>
+                    <el-row :gutter="20">
+                        <el-col :xs="24" :sm="12" v-for="(device, index) in devices" :key="index">
+                            <el-card shadow="hover" class="device-card">
+                                <template #header>
+                                    <div class="card-header">
+                                        <el-tag :type="device.type" size="small">{{ device.tag }}</el-tag>
+                                        <span>{{ device.name }}</span>
+                                    </div>
+                                </template>
+                                <p>{{ device.description }}</p>
+                            </el-card>
+                        </el-col>
+                    </el-row>
+                </el-col>
 
-                <!-- News Section (Right) -->
-                <div class="section-box fr" style="width: 30%;" id="news">
-                    <div class="section-title">新闻动态 <span>更多 >></span></div>
-                    <ul class="news-list">
-                        <li class="clearfix"><a href="#">教育版 AI 新功能发布：增强自动绑定</a> <span>2025-11-20</span></li>
-                        <li class="clearfix"><a href="#">大屏幕投屏支持：无缝投屏到教室显示屏</a> <span>2025-11-18</span></li>
-                        <li class="clearfix"><a href="#">全球教育合作伙伴计划启动</a> <span>2025-11-15</span></li>
-                        <li class="clearfix"><a href="#">星扣平台 V1.0 正式上线公告</a> <span>2025-11-01</span></li>
-                        <li class="clearfix"><a href="#">关于举办数字化教学培训的通知</a> <span>2025-10-28</span></li>
-                    </ul>
-                </div>
-            </div>
+                <!-- News Section -->
+                <el-col :xs="24" :sm="24" :md="8" id="news">
+                    <div class="section-header">
+                        <h2>新闻动态</h2>
+                        <el-tag type="info" effect="plain">Latest News</el-tag>
+                    </div>
+                    <el-card shadow="hover" class="news-card">
+                        <el-timeline>
+                            <el-timeline-item v-for="(news, index) in newsList" :key="index" :timestamp="news.date"
+                                placement="top">
+                                <el-link :underline="false" type="primary">{{ news.title }}</el-link>
+                            </el-timeline-item>
+                        </el-timeline>
+                    </el-card>
+                </el-col>
+            </el-row>
         </div>
 
         <!-- Footer -->
         <div class="footer" id="about">
             <div class="container">
+                <el-divider />
                 <p>
-                    <a href="#">关于我们</a> | <a href="#">联系方式</a> | <a href="#">版权声明</a> | <a href="#">帮助中心</a>
+                    <el-link type="info">关于我们</el-link> |
+                    <el-link type="info">联系方式</el-link> |
+                    <el-link type="info">版权声明</el-link> |
+                    <el-link type="info">帮助中心</el-link>
                 </p>
                 <p>&copy; 2025 星扣 (XingKou.net) 教育数字化服务平台 版权所有</p>
                 <p>技术支持：3DUGC.com</p>
@@ -272,28 +395,24 @@ ul {
     background-color: #e68a00;
 }
 
-/* Navigation */
+/* Navigation - Override Element Plus Menu styles */
 .nav {
     background-color: #0056b3;
+}
+
+:deep(.nav-menu) {
+    border: none !important;
+}
+
+:deep(.nav-menu .el-menu-item) {
+    font-size: 16px;
+    padding: 0 30px;
     height: 50px;
     line-height: 50px;
 }
 
-.nav li {
-    float: left;
-    position: relative;
-}
-
-.nav li a {
-    display: block;
-    color: #fff;
-    padding: 0 30px;
-    font-size: 16px;
-}
-
-.nav li a:hover,
-.nav li.active a {
-    background-color: #004494;
+:deep(.nav-menu .el-menu-item:hover) {
+    background-color: #004494 !important;
 }
 
 /* Banner */
@@ -328,93 +447,133 @@ ul {
     padding: 20px 0;
 }
 
-/* Section Styles */
-.section-box {
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
+/* Section Wrapper */
+.section-wrapper {
+    margin-bottom: 30px;
+}
+
+/* Section Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #0056b3;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    color: #0056b3;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Tag Styles - Professional and Spacious */
+:deep(.el-tag) {
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+:deep(.el-tag--primary.is-plain) {
+    background-color: #e8f4f8;
+    border-color: #0056b3;
+    color: #0056b3;
+}
+
+:deep(.el-tag--success.is-plain) {
+    background-color: #f0f9f4;
+    border-color: #28a745;
+    color: #28a745;
+}
+
+:deep(.el-tag--warning.is-plain) {
+    background-color: #fff8e6;
+    border-color: #ff9900;
+    color: #ff9900;
+}
+
+:deep(.el-tag--info.is-plain) {
+    background-color: #f5f5f5;
+    border-color: #666;
+    color: #666;
+}
+
+:deep(.el-tag--danger) {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+    font-weight: 600;
+}
+
+:deep(.el-tag--warning) {
+    background-color: #ff9900;
+    border-color: #ff9900;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Feature Cards */
+.feature-card {
+    height: 100%;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.feature-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Device Cards */
+.device-card {
+    height: 100%;
     margin-bottom: 20px;
 }
 
-.section-title {
-    border-bottom: 2px solid #0056b3;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    color: #0056b3;
+.device-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
     font-weight: bold;
 }
 
-.section-title span {
-    float: right;
-    font-size: 14px;
-    color: #999;
-    font-weight: normal;
-    cursor: pointer;
+/* News Card */
+.news-card {
+    height: calc(100% - 20px);
 }
 
-/* Grid Layout for Features */
-.feature-grid {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.feature-item {
-    width: 32%;
-    background: #f9f9f9;
-    border: 1px solid #eee;
-    padding: 15px;
-    margin-bottom: 15px;
-    transition: all 0.3s;
-}
-
-.feature-item:hover {
-    border-color: #0056b3;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.feature-item h3 {
-    color: #333;
-    margin-bottom: 10px;
-    font-size: 18px;
-    border-left: 4px solid #0056b3;
+:deep(.news-card .el-timeline) {
     padding-left: 10px;
 }
 
-.feature-item p {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-/* News List */
-.news-list li {
-    border-bottom: 1px dashed #ddd;
-    padding: 10px 0;
-    position: relative;
-    padding-left: 15px;
-}
-
-.news-list li::before {
-    content: "•";
-    color: #0056b3;
-    position: absolute;
-    left: 0;
-}
-
-.news-list li a {
-    float: left;
-    max-width: 80%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.news-list li span {
-    float: right;
+:deep(.news-card .el-timeline-item__timestamp) {
     color: #999;
     font-size: 12px;
+}
+
+:deep(.news-card .el-link) {
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 /* Footer */
@@ -431,8 +590,196 @@ ul {
     margin-bottom: 10px;
 }
 
-.footer a {
+:deep(.footer .el-link) {
     color: #ccc;
     margin: 0 10px;
+}
+
+:deep(.footer .el-link:hover) {
+    color: #fff;
+}
+
+:deep(.footer .el-divider) {
+    border-color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        width: 100%;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Top Bar */
+    .top-bar {
+        font-size: 11px;
+        height: auto;
+        line-height: 1.5;
+        padding: 5px 0;
+    }
+
+    .top-bar .fl,
+    .top-bar .fr {
+        float: none;
+        text-align: center;
+    }
+
+    /* Header */
+    .header {
+        padding: 15px 0;
+    }
+
+    .logo {
+        float: none;
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .logo span {
+        display: block;
+        margin-left: 0;
+        margin-top: 5px;
+        font-size: 14px;
+    }
+
+    .search-box {
+        float: none;
+        text-align: center;
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search-box :deep(.el-input) {
+        width: 100% !important;
+        max-width: 400px;
+    }
+
+    .search-box :deep(.el-button) {
+        width: 100%;
+        max-width: 400px;
+        margin-left: 0 !important;
+    }
+
+    /* Navigation */
+    .nav {
+        overflow-x: auto;
+    }
+
+    :deep(.nav-menu) {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    :deep(.nav-menu .el-menu-item) {
+        padding: 0 15px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    /* Banner */
+    .banner {
+        height: 300px;
+    }
+
+    .banner-text h1 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .banner-text p {
+        font-size: 18px;
+    }
+
+    /* Main Content */
+    .main {
+        padding: 15px 0;
+    }
+
+    /* Section Header */
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .section-header h2 {
+        font-size: 20px;
+    }
+
+    /* Cards */
+    .feature-card,
+    .device-card {
+        margin-bottom: 15px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 20px 0;
+    }
+
+    :deep(.footer .el-link) {
+        margin: 0 5px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Header */
+    .logo {
+        font-size: 20px;
+    }
+
+    .logo span {
+        font-size: 12px;
+    }
+
+    /* Navigation */
+    :deep(.nav-menu .el-menu-item) {
+        padding: 0 10px;
+        font-size: 13px;
+    }
+
+    /* Banner */
+    .banner {
+        height: 250px;
+    }
+
+    .banner-text h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .banner-text p {
+        font-size: 16px;
+    }
+
+    /* Section Header */
+    .section-header h2 {
+        font-size: 18px;
+    }
+}
+
+/* Tablet Landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        width: 100%;
+        padding: 0 30px;
+    }
+
+    .banner-text h1 {
+        font-size: 40px;
+    }
+
+    .banner-text p {
+        font-size: 20px;
+    }
 }
 </style>

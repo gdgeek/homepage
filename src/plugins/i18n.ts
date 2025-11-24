@@ -568,9 +568,44 @@ const messages = {
   },
 };
 
+// Get saved language from cookie or use browser language
+function getInitialLocale(): string {
+  // Try to get from cookie first
+  const savedLocale = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("user_locale="))
+    ?.split("=")[1];
+
+  if (savedLocale) {
+    return savedLocale;
+  }
+
+  // Fallback to browser language
+  const browserLang = navigator.language || (navigator as any).userLanguage;
+
+  // Map browser language to supported locales
+  if (browserLang.startsWith("zh-CN") || browserLang.startsWith("zh-Hans")) {
+    return "zh-CN";
+  } else if (
+    browserLang.startsWith("zh-TW") ||
+    browserLang.startsWith("zh-Hant")
+  ) {
+    return "zh-TW";
+  } else if (browserLang.startsWith("ja")) {
+    return "ja";
+  } else if (browserLang.startsWith("th")) {
+    return "th";
+  } else if (browserLang.startsWith("en")) {
+    return "en";
+  }
+
+  // Default to Traditional Chinese
+  return "zh-TW";
+}
+
 const i18n = createI18n({
   legacy: false,
-  locale: "zh-TW", // Default language
+  locale: getInitialLocale(),
   fallbackLocale: "en",
   messages,
 });

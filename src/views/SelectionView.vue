@@ -93,4 +93,47 @@ p {
     background: white;
     color: #333;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .selection-container {
+        flex-direction: column;
+    }
+
+    .selection-card:hover {
+        flex: 1.1;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .card-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn-enter {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+    }
+
+    .card-content {
+        padding: 1rem;
+    }
+}
 </style>

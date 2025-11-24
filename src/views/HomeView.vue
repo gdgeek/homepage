@@ -18,6 +18,13 @@ const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
+const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
 const handleScroll = () => {
     backToTopVisible.value = window.scrollY > 500;
 };
@@ -63,8 +70,12 @@ onUnmounted(() => {
                 <h1 class="fade-in-up" v-html="t('hero.title')"></h1>
                 <p class="fade-in-up delay-1" v-html="t('hero.subtitle')"></p>
                 <div class="hero-buttons fade-in-up delay-2">
-                    <a href="#devices" class="btn-primary">{{ t('hero.explore') }}</a>
-                    <a href="#about" class="btn-secondary">{{ t('hero.learn') }}</a>
+                    <el-button type="primary" size="large" round @click="scrollToSection('devices')" class="hero-btn">
+                        {{ t('hero.explore') }}
+                    </el-button>
+                    <el-button size="large" round @click="scrollToSection('about')" class="hero-btn hero-btn-secondary">
+                        {{ t('hero.learn') }}
+                    </el-button>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -229,3 +240,38 @@ onUnmounted(() => {
         <LoginModal ref="loginModal" />
     </div>
 </template>
+
+<style scoped>
+/* Ensure hero buttons have consistent width on mobile */
+@media (max-width: 768px) {
+    .hero-buttons :deep(.el-button) {
+        width: 100% !important;
+        margin: 0;
+    }
+
+    .hero-btn {
+        width: 100% !important;
+    }
+
+    .hero-btn-secondary {
+        width: 100% !important;
+    }
+}
+
+/* Desktop button styles */
+.hero-btn {
+    min-width: 160px;
+}
+
+.hero-btn-secondary {
+    background-color: transparent !important;
+    color: var(--text-white) !important;
+    border: 2px solid var(--text-white) !important;
+}
+
+.hero-btn-secondary:hover {
+    background-color: var(--text-white) !important;
+    color: var(--primary-color) !important;
+    border-color: var(--text-white) !important;
+}
+</style>
