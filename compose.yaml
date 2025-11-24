@@ -4,5 +4,6 @@ services:
   web:
     build: .
     ports:
-      - "5555:80"
+      - "8080:80"
     restart: always
+    container_name: home-7dgame-com

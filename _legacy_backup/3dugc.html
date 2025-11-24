@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3dugc.com | Create Your World</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <meta name="description"
+        content="3dugc.com - Let everyone happily create the world. A global AR + AI platform for no-code 3D content creation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">3D<span class="logo-highlight">UGC</span></a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#about" data-i18n="nav.about">Platform</a></li>
+                <li><a href="#capabilities" data-i18n="nav.capabilities">Capabilities</a></li>
+                <li><a href="#devices" data-i18n="nav.devices">Devices</a></li>
+                <li><a href="#news" data-i18n="nav.news">News</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+                <li>
+                    <div class="language-selector">
+                        <select id="langSelect" aria-label="Select Language">
+                            <option value="en">English</option>
+                            <option value="zh-CN">简体中文</option>
+                            <option value="zh-TW" selected>繁體中文</option>
+                            <option value="ja">日本語</option>
+                            <option value="th">ไทย</option>
+                        </select>
+                    </div>
+                </li>
+                <li><button class="btn-primary" onclick="openLoginModal()" data-i18n="nav.login">Login</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="fade-in-up" data-i18n="hero.title">AR + AI <br><span class="text-gradient">Education
+                    Platform</span></h1>
+            <p class="fade-in-up delay-1" data-i18n="hero.subtitle">No-code creation, AI-assisted development, and
+                seamless multi-device experiences.</p>
+            <div class="hero-buttons fade-in-up delay-2">
+                <a href="#devices" class="btn-primary" data-i18n="hero.explore">Supported Devices</a>
+                <a href="#about" class="btn-secondary" data-i18n="hero.learn">Learn More</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title" data-i18n="about.title">No-Code Creation</h2>
+                    <div class="section-line"></div>
+                    <p class="section-subtitle" data-i18n="about.subtitle">Empowering everyone to create immersive AR
+                        content without writing a single line of code.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-card glass-card">
+                        <div class="icon-box">📤</div>
+                        <h3 data-i18n="about.card1.title">Upload Models</h3>
+                        <p data-i18n="about.card1.desc">Easily import your own 3D assets to build your unique AR
+                            library.</p>
+                    </div>
+                    <div class="about-card glass-card">
+                        <div class="icon-box">🧩</div>
+                        <h3 data-i18n="about.card2.title">Scene Assembly</h3>
+                        <p data-i18n="about.card2.desc">Intuitively assemble scenes by placing and arranging objects in
+                            3D space.</p>
+                    </div>
+                    <div class="about-card glass-card">
+                        <div class="icon-box">🖱️</div>
+                        <h3 data-i18n="about.card3.title">Visual Logic</h3>
+                        <p data-i18n="about.card3.desc">Implement complex interactions simply by dragging and dropping
+                            logic blocks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="capabilities" class="section system-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="image-stack">
+                            <!-- Placeholders for images, will replace with generated or CSS shapes -->
+                            <div class="stack-img img-1"
+                                style="background-image: url('images/capabilities_1.webp'); background-size: cover;">
+                            </div>
+                            <div class="stack-img img-2"
+                                style="background-image: url('images/capabilities_2.webp'); background-size: cover;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 class="section-title" data-i18n="capabilities.title">Platform Capabilities</h2>
+                        <p class="lead" data-i18n="capabilities.lead">Advanced features powered by AI and seamless
+                            connectivity.</p>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <strong data-i18n="capabilities.item1.title">AI-Assisted Development</strong>
+                                    <p data-i18n="capabilities.item1.desc">Accelerate your workflow with intelligent
+                                        suggestions and automated tasks.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <strong data-i18n="capabilities.item2.title">Multi-Device Networking</strong>
+                                    <p data-i18n="capabilities.item2.desc">Real-time synchronization across multiple
+                                        devices for collaborative experiences.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="check-icon">✓</span>
+                                <div>
+                                    <strong data-i18n="capabilities.item3.title">3rd-Party View & Casting</strong>
+                                    <p data-i18n="capabilities.item3.desc">Share your AR perspective with others via
+                                        screen casting and external views.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="devices" class="section institutions-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title" data-i18n="devices.title">Supported Devices</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="institutions-grid">
+                    <!-- Card 1 -->
+                    <div class="institution-card">
+                        <div class="card-image"
+                            style="background-image: url('images/device_rokid.webp'); background-size: cover;">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag" data-i18n="devices.ar">AR Headset</span>
+                            <h3 data-i18n="devices.card1.title">Rokid AR Studio</h3>
+                            <p data-i18n="devices.card1.desc">Experience the full potential of spatial computing.</p>
+                            <a href="#" class="read-more" data-i18n="devices.learn">Learn More →</a>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="institution-card">
+                        <div class="card-image"
+                            style="background-image: url('images/device_ipad.webp'); background-size: cover;">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag" data-i18n="devices.tablet">Tablet</span>
+                            <h3 data-i18n="devices.card2.title">iPad</h3>
+                            <p data-i18n="devices.card2.desc">Create and view AR content on the go.</p>
+                            <a href="#" class="read-more" data-i18n="devices.learn">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="section news-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title" data-i18n="news.title">Platform Updates</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="news-grid">
+                    <article class="news-item">
+                        <div class="news-date">
+                            <span class="day">20</span>
+                            <span class="month" data-i18n="month.nov">Nov</span>
+                        </div>
+                        <div class="news-content">
+                            <h3 data-i18n="news.item1.title">New AI Features Released</h3>
+                            <p data-i18n="news.item1.desc">Enhanced object recognition and auto-rigging now available.
+                            </p>
+                            <a href="#" class="news-link" data-i18n="news.readmore">Read More</a>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-date">
+                            <span class="day">15</span>
+                            <span class="month" data-i18n="month.nov">Nov</span>
+                        </div>
+                        <div class="news-content">
+                            <h3 data-i18n="news.item2.title">Rokid AR Studio Integration</h3>
+                            <p data-i18n="news.item2.desc">Seamlessly deploy your projects to the latest AR hardware.
+                            </p>
+                            <a href="#" class="news-link" data-i18n="news.readmore">Read More</a>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-date">
+                            <span class="day">10</span>
+                            <span class="month" data-i18n="month.nov">Nov</span>
+                        </div>
+                        <div class="news-content">
+                            <h3 data-i18n="news.item3.title">Education Partnership Program</h3>
+                            <p data-i18n="news.item3.desc">Join our network of schools and institutions transforming
+                                learning.</p>
+                            <a href="#" class="news-link" data-i18n="news.readmore">Read More</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">3D<span class="logo-highlight">UGC</span></a>
+                    <p data-i18n="footer.tagline">Let everyone happily create the world.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.links">Quick Links</h4>
+                    <ul>
+                        <li><a href="#about" data-i18n="nav.about">Platform</a></li>
+                        <li><a href="#capabilities" data-i18n="nav.capabilities">Capabilities</a></li>
+                        <li><a href="#devices" data-i18n="nav.devices">Devices</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 data-i18n="footer.contact">Contact</h4>
+                    <p>info@macauedu.mo</p>
+                    <p>+853 2800 0000</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="Twitter">TW</a>
+                        <a href="#" aria-label="Instagram">IG</a>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4 data-i18n="footer.subscribeTitle"></h4>
+                    <p data-i18n="footer.newsletter.desc">Subscribe to our newsletter for the latest education news.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address"
+                            data-i18n-placeholder="footer.email.placeholder" required>
+                        <button type="submit" data-i18n="footer.subscribe.btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2025 3dugc.com. Macau Headquarters. Xia Ding Technology. All
+                    rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" aria-label="Back to Top">↑</button>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/active-link.js"></script>
+    <script src="js/scroll-top.js"></script>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="login-modal">
+            <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+            <h2 class="login-title" data-i18n="login.title">Login</h2>
+            <form class="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="username" data-i18n="login.username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" data-i18n="login.password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="login-submit-btn" data-i18n="login.btn">Sign In</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
