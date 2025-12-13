@@ -11,7 +11,7 @@ RUN npm install -g pnpm@latest
 
 # Install dependencies (pnpm will generate lock file)
 RUN pnpm install
-
+    
 # Copy source code
 COPY . .
 

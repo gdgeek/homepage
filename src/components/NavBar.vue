@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
 import { setCookie, getCookie } from '../utils/cookies';
 
 const { t, locale } = useI18n();
+const route = useRoute();
 
 const emit = defineEmits(['open-login']);
 
@@ -26,11 +28,19 @@ const scrollToSection = (id: string) => {
     }
 };
 
+// Update page title based on current route and locale
+const updatePageTitle = () => {
+    const titleKey = (route.meta.titleKey as string) || '3dugc';
+    document.title = t(`pageTitle.${titleKey}`);
+};
+
 const changeLanguage = (value: string) => {
     locale.value = value;
     document.documentElement.lang = value;
     // Save language preference to cookie (expires in 1 year)
     setCookie('user_locale', value, 365);
+    // Update page title with new language
+    updatePageTitle();
 };
 
 onMounted(() => {
@@ -65,7 +75,7 @@ onUnmounted(() => {
             <ul class="nav-links" :class="{ active: isMobileMenuOpen }">
                 <li><a href="#about" @click.prevent="scrollToSection('about')">{{ t('nav.about') }}</a></li>
                 <li><a href="#capabilities" @click.prevent="scrollToSection('capabilities')">{{ t('nav.capabilities')
-                }}</a></li>
+                        }}</a></li>
                 <li><a href="#devices" @click.prevent="scrollToSection('devices')">{{ t('nav.devices') }}</a></li>
                 <li><a href="#news" @click.prevent="scrollToSection('news')">{{ t('nav.news') }}</a></li>
                 <li><a href="#contact" @click.prevent="scrollToSection('contact')">{{ t('nav.contact') }}</a></li>

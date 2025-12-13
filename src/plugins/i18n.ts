@@ -2,6 +2,11 @@ import { createI18n } from "vue-i18n";
 
 const messages = {
   en: {
+    pageTitle: {
+      "3dugc": "3DUGC - Create Your World",
+      xingkou: "XingKou - Education Digital Platform",
+      selection: "Select Platform",
+    },
     nav: {
       about: "Platform",
       capabilities: "Core Tech",
@@ -117,6 +122,11 @@ const messages = {
     },
   },
   "zh-CN": {
+    pageTitle: {
+      "3dugc": "3DUGC - 创造你的世界",
+      xingkou: "星扣 - 教育数字化服务平台",
+      selection: "选择平台",
+    },
     nav: {
       about: "平台介绍",
       capabilities: "核心技术",
@@ -226,6 +236,11 @@ const messages = {
     },
   },
   "zh-TW": {
+    pageTitle: {
+      "3dugc": "3DUGC - 創造你的世界",
+      xingkou: "星扣 - 教育數字化服務平台",
+      selection: "選擇平台",
+    },
     nav: {
       about: "平台介紹",
       capabilities: "核心技術",
@@ -335,6 +350,11 @@ const messages = {
     },
   },
   ja: {
+    pageTitle: {
+      "3dugc": "3DUGC - 世界を創造しよう",
+      xingkou: "XingKou - 教育デジタルプラットフォーム",
+      selection: "プラットフォームを選択",
+    },
     nav: {
       about: "プラットフォーム",
       capabilities: "コア技術",
@@ -451,6 +471,11 @@ const messages = {
     },
   },
   th: {
+    pageTitle: {
+      "3dugc": "3DUGC - สร้างโลกของคุณ",
+      xingkou: "XingKou - แพลตฟอร์มการศึกษาดิจิทัล",
+      selection: "เลือกแพลตฟอร์ม",
+    },
     nav: {
       about: "แพลตฟอร์ม",
       capabilities: "เทคโนโลยีหลัก",
