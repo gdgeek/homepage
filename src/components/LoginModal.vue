@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useUserStore } from '../stores/user';
 import { ElMessage } from 'element-plus';
+import { getRootDomain } from '../utils/domain';
 
 const { t } = useI18n();
 const userStore = useUserStore();
@@ -35,14 +36,7 @@ const handleLogin = async () => {
             ElMessage.success(t('login.success') || 'Login successful!');
             if (data.token) {
                 // Redirect logic matching original
-                let rootDomain;
-                const hostname = window.location.hostname;
-                if (hostname === 'localhost' || hostname === '127.0.0.1') {
-                    rootDomain = '3dugc.com';
-                } else {
-                    const parts = hostname.split(".");
-                    rootDomain = parts.slice(-2).join(".");
-                }
+                const rootDomain = getRootDomain();
                 const redirectUrl = `//d.${rootDomain}/sso?refreshToken=${data.token.refreshToken}`;
                 window.location.href = redirectUrl;
             }
