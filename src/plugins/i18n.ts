@@ -5,6 +5,7 @@ const messages = {
     pageTitle: {
       "3dugc": "3DUGC - Create Your World",
       xingkou: "XingKou - Education Digital Platform",
+      xiading: "Xia Ding - Education Digital Platform",
       selection: "Select Platform",
     },
     nav: {
@@ -125,6 +126,7 @@ const messages = {
     pageTitle: {
       "3dugc": "3DUGC - 创造你的世界",
       xingkou: "星扣 - 教育数字化服务平台",
+      xiading: "夏鼎 - 教育数字化服务平台",
       selection: "选择平台",
     },
     nav: {
@@ -239,6 +241,7 @@ const messages = {
     pageTitle: {
       "3dugc": "3DUGC - 創造你的世界",
       xingkou: "星扣 - 教育數字化服務平台",
+      xiading: "夏鼎 - 教育數字化服務平台",
       selection: "選擇平台",
     },
     nav: {
@@ -353,6 +356,7 @@ const messages = {
     pageTitle: {
       "3dugc": "3DUGC - 世界を創造しよう",
       xingkou: "XingKou - 教育デジタルプラットフォーム",
+      xiading: "Xia Ding - 教育デジタルプラットフォーム",
       selection: "プラットフォームを選択",
     },
     nav: {
@@ -474,6 +478,7 @@ const messages = {
     pageTitle: {
       "3dugc": "3DUGC - สร้างโลกของคุณ",
       xingkou: "XingKou - แพลตฟอร์มการศึกษาดิจิทัล",
+      xiading: "Xia Ding - แพลตฟอร์มการศึกษาดิจิทัล",
       selection: "เลือกแพลตฟอร์ม",
     },
     nav: {

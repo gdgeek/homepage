@@ -10,17 +10,24 @@ const navigateTo = (route: string) => {
 
 <template>
     <div class="selection-container">
-        <div class="selection-card" @click="navigateTo('/3dugc')">
+        <div class="selection-card card-3dugc" @click="navigateTo('/3dugc')">
             <div class="card-content">
                 <h2>3DUGC.com</h2>
                 <p>Global AR + AI Creation Platform</p>
                 <button class="btn-enter">Enter Site</button>
             </div>
         </div>
-        <div class="selection-card" @click="navigateTo('/xingkou')">
+        <div class="selection-card card-xingkou" @click="navigateTo('/xingkou')">
             <div class="card-content">
                 <h2>XingKou.net</h2>
                 <p>Education Digital Service Platform</p>
+                <button class="btn-enter">Enter Site</button>
+            </div>
+        </div>
+        <div class="selection-card card-xiading" @click="navigateTo('/xiading')">
+            <div class="card-content">
+                <h2>XiaDing</h2>
+                <p>Macau Education Digital Platform</p>
                 <button class="btn-enter">Enter Site</button>
             </div>
         </div>
@@ -46,13 +53,18 @@ const navigateTo = (route: string) => {
     overflow: hidden;
 }
 
-.selection-card:first-child {
+.card-3dugc {
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     color: white;
 }
 
-.selection-card:last-child {
+.card-xingkou {
     background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
+    color: white;
+}
+
+.card-xiading {
+    background: linear-gradient(135deg, #00695c 0%, #004d40 100%);
     color: white;
 }
 
