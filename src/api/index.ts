@@ -8,9 +8,10 @@ const getApiBaseUrl = (): string => {
     return "https://api.d.3dugc.com";
   }
 
-  const parts = hostname.split(".");
-  if (parts.length > 2) {
-    hostname = parts.slice(-2).join(".");
+  // Strip www or other subdomain prefixes to get base domain
+  // e.g., www.3dugc.com -> 3dugc.com, xiading.hxgxonline.com -> xiading.hxgxonline.com
+  if (hostname.startsWith("www.")) {
+    hostname = hostname.substring(4);
   }
 
   return `https://api.d.${hostname}`;
