@@ -124,13 +124,13 @@ const newsList = [
         <div class="header">
             <div class="container clearfix">
                 <div class="logo">
-                    夏鼎 XiaDing
-                    <span>讓每個人都可以快樂的創造世界</span>
+                    <img src="../assets/logo_xiading.png" alt="XiaDing Logo" />
                 </div>
                 <div class="search-box">
                     <input type="text" v-model="searchQuery" placeholder="請輸入關鍵字搜索..." @keyup.enter="handleSearch" />
                     <button @click="handleSearch">搜索</button>
                     <button class="login-btn-header" @click="openLogin">登錄</button>
+                    <!-- <button class="login-btn-header" @click="openLogin">登錄</button> -->
                 </div>
             </div>
         </div>
@@ -138,7 +138,7 @@ const newsList = [
         <!-- Navigation -->
         <div class="nav">
             <div class="container">
-                <el-menu mode="horizontal" :default-active="activeMenu" class="nav-menu" background-color="#00695c"
+                <el-menu mode="horizontal" :default-active="activeMenu" class="nav-menu" background-color="#1976D2"
                     text-color="#fff" active-text-color="#ffd04b">
                     <el-menu-item index="home" @click="scrollToSection('home')">首頁</el-menu-item>
                     <el-menu-item index="intro" @click="scrollToSection('intro')">平台介紹</el-menu-item>
@@ -175,7 +175,7 @@ const newsList = [
                         <el-card shadow="hover" class="feature-card">
                             <template #header>
                                 <div class="card-header">
-                                    <el-icon :size="24" color="#00695c">
+                                    <el-icon :size="24" color="#1976D2">
                                         <component :is="feature.icon" />
                                     </el-icon>
                                     <span>{{ feature.title }}</span>
@@ -202,7 +202,7 @@ const newsList = [
                         <el-card shadow="hover" class="feature-card">
                             <template #header>
                                 <div class="card-header">
-                                    <el-icon :size="24" color="#00695c">
+                                    <el-icon :size="24" color="#1976D2">
                                         <component :is="tech.icon" />
                                     </el-icon>
                                     <span>{{ tech.title }}</span>
@@ -296,7 +296,7 @@ a {
 }
 
 a:hover {
-    color: #00695c;
+    color: #1976D2;
 }
 
 ul {
@@ -340,17 +340,15 @@ ul {
 }
 
 .logo {
-    font-size: 32px;
-    font-weight: bold;
-    color: #00695c;
     float: left;
+    height: 80px;
+    display: flex;
+    align-items: center;
 }
 
-.logo span {
-    font-size: 16px;
-    color: #666;
-    margin-left: 10px;
-    font-weight: normal;
+.logo img {
+    height: 100%;
+    width: auto;
 }
 
 .search-box {
@@ -359,7 +357,7 @@ ul {
 }
 
 .search-box input {
-    border: 2px solid #00695c;
+    border: 2px solid #1976D2;
     padding: 5px;
     width: 250px;
     height: 34px;
@@ -367,7 +365,7 @@ ul {
 }
 
 .search-box button {
-    background-color: #00695c;
+    background-color: #1976D2;
     color: #fff;
     border: none;
     padding: 0 20px;
@@ -397,7 +395,7 @@ ul {
 
 /* Navigation - Override Element Plus Menu styles */
 .nav {
-    background-color: #00695c;
+    background-color: #1976D2;
 }
 
 :deep(.nav-menu) {
@@ -412,7 +410,7 @@ ul {
 }
 
 :deep(.nav-menu .el-menu-item:hover) {
-    background-color: #004d40 !important;
+    background-color: #0D47A1 !important;
 }
 
 /* Banner */
@@ -459,12 +457,12 @@ ul {
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 2px solid #00695c;
+    border-bottom: 2px solid #1976D2;
 }
 
 .section-header h2 {
     font-size: 24px;
-    color: #00695c;
+    color: #1976D2;
     font-weight: bold;
     margin: 0;
 }
@@ -479,9 +477,9 @@ ul {
 }
 
 :deep(.el-tag--primary.is-plain) {
-    background-color: #e0f2f1;
-    border-color: #00695c;
-    color: #00695c;
+    background-color: #E3F2FD;
+    border-color: #1976D2;
+    color: #1976D2;
 }
 
 :deep(.el-tag--success.is-plain) {
